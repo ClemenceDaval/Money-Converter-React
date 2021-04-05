@@ -1,0 +1,9 @@
+@use 'src/styles/vars';
+
+.converter {
+
+  width: 30rem;
+  margin: 2 * vars.$gutter auto; 
+  border : 2*vars.$gutter solid vars.$color-alt;
+  border-radius : 1*vars.$gutter;
+}

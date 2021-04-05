@@ -2,17 +2,8 @@
 @use 'vars';
 
 body {
-  font-family: sans-serif;
+  font-family: vars.$font;
+  font-weight: 300;
+  color: vars.$color-main;
+  background-color: vars.$color-alt;
 }
-
-/* 
-  // or you can import your own font
-  @font-face {
-    font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto-Regular.ttf');
-  }
-
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-*/

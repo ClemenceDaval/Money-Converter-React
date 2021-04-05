@@ -7,4 +7,3 @@ In the first version, the user will only be able to choose in which currency con
 In a future version, the use will also be able to change the amount and the currency of start.
 
 ## V1
-
