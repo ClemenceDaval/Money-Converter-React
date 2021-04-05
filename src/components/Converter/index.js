@@ -17,6 +17,7 @@ class Converter extends React.Component {
     open: false,
     baseAmount: 1,
     currency: 'United States Dollar',
+    currencySearch: '',
   };
 
   setCurrency = (newCurrencyValue) => {
@@ -51,8 +52,16 @@ class Converter extends React.Component {
     });
   }
 
+  setCurrencySearch = (newCurrencySearch) => {
+    this.setState(
+      {
+        currencySearch: newCurrencySearch,
+      },
+    );
+  }
+
   render() {
-    const { open, baseAmount, currency } = this.state;
+    const { open, baseAmount, currency, currencySearch } = this.state;
     const convertedAmount = this.getConvertedAmount();
 
     return (
@@ -60,7 +69,14 @@ class Converter extends React.Component {
         <Header baseAmount={baseAmount} />
         <Toggler open={open} doToggle={this.toggle} />
         {
-          open && <Currencies currencies={currenciesData} changeCurrency={this.setCurrency} />
+          open && (
+            <Currencies
+              currencies={currenciesData}
+              changeCurrency={this.setCurrency}
+              currencySearch={currencySearch}
+              changeCurrencySearch={this.setCurrencySearch}
+            />
+          )
         }
         <Amount amount={convertedAmount} currency={currency} />
       </div>

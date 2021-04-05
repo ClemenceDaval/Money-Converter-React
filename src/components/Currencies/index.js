@@ -5,22 +5,28 @@ import Currency from './Currency';
 
 import './currencies.scss';
 
-const Currencies = ({ currencies, changeCurrency }) => (
-  <main className="currencies">
-    <div className="currencies__title">Currencies</div>
-    <ul className="currencies__list">
-      {
-        currencies.map((currency) => (
-          <Currency
-            changeCurrency={changeCurrency}
-            key={currency.name}
-            {...currency}
-          />
-        ))
-      }
-    </ul>
-  </main>
-);
+const Currencies = ({ currencies, changeCurrency, currencySearch, changeCurrencySearch }) => {
+  function handleChange(event) {
+    changeCurrencySearch(event.target.value);
+  }
+
+  return (
+    <main className="currencies">
+      <input type="text" className="currencies__search" placeholder="Rechercher" value={currencySearch} onChange={handleChange} />
+      <ul className="currencies__list">
+        {
+          currencies.map((currency) => (
+            <Currency
+              changeCurrency={changeCurrency}
+              key={currency.name}
+              {...currency}
+            />
+          ))
+        }
+      </ul>
+    </main>
+  );
+};
 
 Currencies.propTypes = {
   currencies: PropTypes.arrayOf(
@@ -31,6 +37,9 @@ Currencies.propTypes = {
     ).isRequired,
   ).isRequired,
   changeCurrency: PropTypes.func.isRequired,
+  currencySearch: PropTypes.string.isRequired,
+  changeCurrencySearch: PropTypes.func.isRequired,
+
 };
 
 export default Currencies;
