@@ -17,6 +17,14 @@ class Converter extends React.Component {
     currency: 'United States Dollar',
   };
 
+  setCurrency = (newCurrencyValue) => {
+    console.log('set currency définie dans Converter');
+
+    this.setState({
+      currency: newCurrencyValue,
+    });
+  }
+
   getConvertedAmount() {
     const { baseAmount, currency } = this.state;
     // on fait un find sur la currency pour trouver le rate
@@ -38,7 +46,7 @@ class Converter extends React.Component {
     return (
       <div className="converter">
         <Header baseAmount={baseAmount} />
-        <Currencies currencies={currenciesData} />
+        <Currencies currencies={currenciesData} changeCurrency={this.setCurrency} />
         <Amount amount={convertedAmount} currency={currency} />
       </div>
     );

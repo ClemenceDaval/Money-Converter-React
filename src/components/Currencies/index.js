@@ -5,12 +5,18 @@ import Currency from './Currency';
 
 import './currencies.scss';
 
-const Currencies = ({ currencies }) => (
+const Currencies = ({ currencies, changeCurrency }) => (
   <main className="currencies">
     <div className="currencies__title">Currencies</div>
     <ul className="currencies__list">
       {
-        currencies.map((currency) => (<Currency key={currency.name} {...currency} />))
+        currencies.map((currency) => (
+          <Currency
+            changeCurrency={changeCurrency}
+            key={currency.name}
+            {...currency}
+          />
+        ))
       }
     </ul>
   </main>
@@ -24,6 +30,7 @@ Currencies.propTypes = {
       },
     ).isRequired,
   ).isRequired,
+  changeCurrency: PropTypes.func.isRequired,
 };
 
 export default Currencies;
