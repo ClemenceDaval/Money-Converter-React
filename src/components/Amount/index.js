@@ -1,12 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './amount.scss';
 
-const Amount = () => (
+const Amount = ({ amount, currency }) => (
   <header className="amount">
-    <p className="amount__amount">1.09</p>
-    <p className="amount__currency">United States Dollar</p>
+    <p className="amount__amount">{amount}</p>
+    <p className="amount__currency">{currency}</p>
   </header>
 );
+
+Amount.propTypes = {
+  amount: PropTypes.number.isRequired,
+  currency: PropTypes.string.isRequired,
+};
 
 export default Amount;
