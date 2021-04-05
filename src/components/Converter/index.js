@@ -42,6 +42,24 @@ class Converter extends React.Component {
     return Math.round(amount * 100) / 100;
   }
 
+  setCurrencySearch = (newCurrencySearch) => {
+    this.setState(
+      {
+        currencySearch: newCurrencySearch,
+      },
+    );
+  }
+
+  getFilteredCurrencies() {
+    const { currencySearch } = this.state;
+
+    const filteredCurrencies = currenciesData.filter(
+      (currencyData) => currencyData.name.includes(currencySearch),
+    );
+
+    return filteredCurrencies;
+  }
+
   toggle = () => {
     // console.log('exécution de toggle');
     // console.log(this);
@@ -52,17 +70,10 @@ class Converter extends React.Component {
     });
   }
 
-  setCurrencySearch = (newCurrencySearch) => {
-    this.setState(
-      {
-        currencySearch: newCurrencySearch,
-      },
-    );
-  }
-
   render() {
     const { open, baseAmount, currency, currencySearch } = this.state;
     const convertedAmount = this.getConvertedAmount();
+    const filteredeCurrencies = this.getFilteredCurrencies();
 
     return (
       <div className="converter">
@@ -71,7 +82,7 @@ class Converter extends React.Component {
         {
           open && (
             <Currencies
-              currencies={currenciesData}
+              currencies={filteredeCurrencies}
               changeCurrency={this.setCurrency}
               currencySearch={currencySearch}
               changeCurrencySearch={this.setCurrencySearch}
