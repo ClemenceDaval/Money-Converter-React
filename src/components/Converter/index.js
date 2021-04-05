@@ -13,6 +13,7 @@ import './converter.scss';
 
 class Converter extends React.Component {
   state = {
+    open: false,
     baseAmount: 1,
     currency: 'United States Dollar',
   };
@@ -39,14 +40,26 @@ class Converter extends React.Component {
     return Math.round(amount * 100) / 100;
   }
 
+  toggle() {
+    console.log('exécution de toggle');
+    console.log(this);
+
+    const { open } = this.state;
+    this.setState({
+      open: !open,
+    });
+  }
+
   render() {
-    const { baseAmount, currency } = this.state;
+    const { open, baseAmount, currency } = this.state;
     const convertedAmount = this.getConvertedAmount();
 
     return (
       <div className="converter">
         <Header baseAmount={baseAmount} />
-        <Currencies currencies={currenciesData} changeCurrency={this.setCurrency} />
+        {
+          open && <Currencies currencies={currenciesData} changeCurrency={this.setCurrency} />
+        }
         <Amount amount={convertedAmount} currency={currency} />
       </div>
     );
