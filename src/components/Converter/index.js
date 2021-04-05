@@ -17,12 +17,29 @@ class Converter extends React.Component {
     currency: 'United States Dollar',
   };
 
+  getConvertedAmount() {
+    const { baseAmount, currency } = this.state;
+    // on fait un find sur la currency pour trouver le rate
+    const currencyObject = currenciesData.find(
+      (currencyData) => currencyData.name === currency,
+    );
+    // on récupère le taux associé
+    const { rate } = currencyObject;
+    // on multiplie le rate avec le baseAmount
+    const amount = rate * baseAmount;
+    // on retourne la valeur arrondie au centième
+    return Math.round(amount * 100) / 100;
+  }
+
   render() {
+    const { baseAmount, currency } = this.state;
+    const convertedAmount = this.getConvertedAmount();
+
     return (
       <div className="converter">
-        <Header baseAmount={1} />
+        <Header baseAmount={baseAmount} />
         <Currencies currencies={currenciesData} />
-        <Amount amount={1.10} currency="United States Dollar" />
+        <Amount amount={convertedAmount} currency={currency} />
       </div>
     );
   }
