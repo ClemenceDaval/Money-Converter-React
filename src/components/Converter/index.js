@@ -53,8 +53,11 @@ class Converter extends React.Component {
   getFilteredCurrencies() {
     const { currencySearch } = this.state;
 
+    // on passe la chaine à rechercher en minuscule
+    const currencySearchInLowerCase = currencySearch.toLowerCase();
+
     const filteredCurrencies = currenciesData.filter(
-      (currencyData) => currencyData.name.includes(currencySearch),
+      (currencyData) => currencyData.name.toLowerCase().includes(currencySearchInLowerCase),
     );
 
     return filteredCurrencies;
