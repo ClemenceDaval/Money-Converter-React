@@ -8,6 +8,7 @@ import currenciesData from 'src/data/currencies';
 import Header from '../Header';
 import Currencies from '../Currencies';
 import Amount from '../Amount';
+import Toggler from '../Toggler';
 
 import './converter.scss';
 
@@ -40,9 +41,9 @@ class Converter extends React.Component {
     return Math.round(amount * 100) / 100;
   }
 
-  toggle() {
-    console.log('exécution de toggle');
-    console.log(this);
+  toggle = () => {
+    // console.log('exécution de toggle');
+    // console.log(this);
 
     const { open } = this.state;
     this.setState({
@@ -57,6 +58,7 @@ class Converter extends React.Component {
     return (
       <div className="converter">
         <Header baseAmount={baseAmount} />
+        <Toggler open={open} doToggle={this.toggle} />
         {
           open && <Currencies currencies={currenciesData} changeCurrency={this.setCurrency} />
         }
