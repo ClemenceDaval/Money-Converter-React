@@ -22,3 +22,17 @@ By default, the list of currencies isn't displayed. The user can display the cur
 Implemented functionality :
 
 - Addition of an input in the currency component : the user can now search the currency he's interested in and the currencies corresponding to his research are displayed.
+
+## V4
+
+Implemented functionality :
+
+- The user can now change the base amount
+
+## Futures versions
+
+Functionalities to implement / Modifications to make :
+
+- Allow users to change the base currency
+- Switch from Class Components to Hooks
+- Improvment of the design

@@ -5,7 +5,12 @@ import Currency from './Currency';
 
 import './currencies.scss';
 
-const Currencies = ({ currencies, changeCurrency, currencySearch, changeCurrencySearch }) => {
+const Currencies = ({
+  currencies,
+  changeCurrency,
+  currencySearch,
+  changeCurrencySearch,
+}) => {
   function handleChange(event) {
     changeCurrencySearch(event.target.value);
   }

@@ -81,7 +81,12 @@ class Converter extends React.Component {
   }
 
   render() {
-    const { open, baseAmount, currency, currencySearch} = this.state;
+    const {
+      open,
+      baseAmount,
+      currency,
+      currencySearch,
+    } = this.state;
     const convertedAmount = this.getConvertedAmount();
     const filteredeCurrencies = this.getFilteredCurrencies();
 

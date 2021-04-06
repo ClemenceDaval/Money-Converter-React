@@ -7,6 +7,7 @@
   flex-wrap:nowrap;
   align-items: baseline;
   border:none;
+  padding-bottom: 2.3*vars.$gutter;
   
   &__text {
     padding: vars.$gutter;
