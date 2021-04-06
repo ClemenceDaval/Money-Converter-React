@@ -9,6 +9,7 @@ import Header from '../Header';
 import Currencies from '../Currencies';
 import Amount from '../Amount';
 import Toggler from '../Toggler';
+import AmountModifier from '../AmountModifier';
 
 import './converter.scss';
 
@@ -40,6 +41,12 @@ class Converter extends React.Component {
     const amount = rate * baseAmount;
     // on retourne la valeur arrondie au centième
     return Math.round(amount * 100) / 100;
+  }
+
+  setBaseAmount = (newAmountValue) => {
+    this.setState({
+      baseAmount: newAmountValue,
+    });
   }
 
   setCurrencySearch = (newCurrencySearch) => {
@@ -74,22 +81,28 @@ class Converter extends React.Component {
   }
 
   render() {
-    const { open, baseAmount, currency, currencySearch } = this.state;
+    const { open, baseAmount, currency, currencySearch} = this.state;
     const convertedAmount = this.getConvertedAmount();
     const filteredeCurrencies = this.getFilteredCurrencies();
 
     return (
       <div className="converter">
-        <Header baseAmount={baseAmount} />
+        <Header
+          baseAmount={baseAmount}
+          changeAmount={this.changeAmount}
+        />
         <Toggler open={open} doToggle={this.toggle} />
         {
           open && (
-            <Currencies
-              currencies={filteredeCurrencies}
-              changeCurrency={this.setCurrency}
-              currencySearch={currencySearch}
-              changeCurrencySearch={this.setCurrencySearch}
-            />
+            <>
+              <AmountModifier baseAmount={baseAmount} changeBaseAmount={this.setBaseAmount} />
+              <Currencies
+                currencies={filteredeCurrencies}
+                changeCurrency={this.setCurrency}
+                currencySearch={currencySearch}
+                changeCurrencySearch={this.setCurrencySearch}
+              />
+            </>
           )
         }
         <Amount amount={convertedAmount} currency={currency} />

@@ -7,14 +7,14 @@
   padding: vars.$gutter * 3;
   border-radius: 1*vars.$gutter 1*vars.$gutter 0 0;
 
-
   &__title{
     font-weight: 700;
     font-size: 2rem;
+    margin-bottom: vars.$gutter;
   }
 
   &__text{
-    margin-top: vars.$gutter;
     font-size: 1.3rem;
+    display : inline;
   }
 }

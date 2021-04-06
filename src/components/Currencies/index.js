@@ -11,8 +11,8 @@ const Currencies = ({ currencies, changeCurrency, currencySearch, changeCurrency
   }
 
   return (
-    <main className="currencies">
-      <input type="text" className="currencies__search" placeholder="Rechercher" value={currencySearch} onChange={handleChange} />
+    <div className="currencies">
+      <input type="text" className="currencies__search" placeholder="Research currency" value={currencySearch} onChange={handleChange} />
       <ul className="currencies__list">
         {
           currencies.map((currency) => (
@@ -24,7 +24,7 @@ const Currencies = ({ currencies, changeCurrency, currencySearch, changeCurrency
           ))
         }
       </ul>
-    </main>
+    </div>
   );
 };
 

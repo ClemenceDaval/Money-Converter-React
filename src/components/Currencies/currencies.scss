@@ -4,6 +4,8 @@
   background-color: vars.$color-light;
   max-height: 250px;
   overflow-y: auto;
+  padding-top:vars.$gutter;
+  border:none;
   
   &__search {
     padding: vars.$gutter;
