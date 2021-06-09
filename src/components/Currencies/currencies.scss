@@ -1,0 +1,34 @@
+@use 'src/styles/vars';
+
+.currencies {
+  background-color: vars.$color-light;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-top:vars.$gutter;
+  border:none;
+  
+  &__search {
+    padding: vars.$gutter;
+    width: 100%;
+    border: none;
+    color: vars.$color-main;
+    font: inherit;
+    &::placeholder {
+      color: vars.$color-alt;
+    }
+  }
+
+  &__list__item {
+    padding: vars.$gutter;
+    border-top: 1px solid vars.$color-alt;
+    font-weight: 500;
+    transition: background-color vars.$transition-slow;
+    cursor: pointer;
+
+    &:hover {
+      background-color: vars.$color-alt;
+      transition-duration: vars.$transition-fast;
+    }
+  }
+
+}

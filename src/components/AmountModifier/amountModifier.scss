@@ -1,0 +1,28 @@
+@use 'src/styles/vars';
+
+.amountModifier {
+  background-color: vars.$color-light;
+  padding-top:1.8*vars.$gutter;
+  display:flex;
+  flex-wrap:nowrap;
+  align-items: baseline;
+  border:none;
+  padding-bottom: 2.3*vars.$gutter;
+  
+  &__text {
+    padding: vars.$gutter;
+  }
+
+  &__input {
+    padding: vars.$gutter;
+    margin-top: vars.$gutter;
+    border: none;
+    border-bottom: 1px solid vars.$color-main;
+    color: vars.$color-main;
+    font: inherit;
+    &::placeholder {
+      color: vars.$color-alt;
+    }
+  }
+
+}
